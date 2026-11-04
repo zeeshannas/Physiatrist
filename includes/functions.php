@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-if (session_status() === PHP_SESSION_NONE) { session_start(); }
+if (session_status() === PHP_SESSION_NONE) { @session_start(); }
 
 $CFG = require __DIR__ . '/../config.php';
 date_default_timezone_set($CFG['timezone']);
@@ -108,14 +108,40 @@ function faq_schema(array $faqs): array {
 }
 
 /* ---------- Security ---------- */
-function csrf_token(): string {
-    if (empty($_SESSION['csrf'])) $_SESSION['csrf'] = bin2hex(random_bytes(16));
-    return $_SESSION['csrf'];
+function app_secret(): string {
+    return getenv("APP_SECRET") ?: hash("sha256", cfg("admin_password") . "|physiatrist-site");
 }
-function csrf_check(?string $t): bool { return !empty($_SESSION['csrf']) && is_string($t) && hash_equals($_SESSION['csrf'], $t); }
-
+/** Stateless CSRF token (serverless-safe): "<time>.<hmac>" */
+function csrf_token(): string {
+    $t = (string)time();
+    return $t . "." . hash_hmac("sha256", "csrf|" . $t, app_secret());
+}
+function csrf_check(?string $tok): bool {
+    if (!is_string($tok) || !str_contains($tok, ".")) return false;
+    [$t, $sig] = explode(".", $tok, 2);
+    if (!ctype_digit($t) || (time() - (int)$t) > 21600 || (int)$t > time() + 60) return false;
+    return hash_equals(hash_hmac("sha256", "csrf|" . $t, app_secret()), $sig);
+}
+/** Admin login via signed cookie (no server session needed) */
+function admin_ok(): bool {
+    $c = $_COOKIE["adm"] ?? "";
+    if (!str_contains($c, ".")) return false;
+    [$t, $sig] = explode(".", $c, 2);
+    return ctype_digit($t) && (time() - (int)$t) < 28800 && hash_equals(hash_hmac("sha256", "adm|" . $t, app_secret()), $sig);
+}
+function admin_login(): void {
+    $t = (string)time();
+    $https = (!empty($_SERVER["HTTPS"]) && $_SERVER["HTTPS"] !== "off") || ($_SERVER["HTTP_X_FORWARDED_PROTO"] ?? "") === "https";
+    setcookie("adm", $t . "." . hash_hmac("sha256", "adm|" . $t, app_secret()), ["expires"=>time()+28800,"path"=>"/","httponly"=>true,"secure"=>$https,"samesite"=>"Lax"]);
+}
+function admin_logout(): void { setcookie("adm", "", ["expires"=>time()-3600,"path"=>"/"]); }
 /* ---------- Storage (JSON file, locked) ---------- */
-function store_path(): string { return __DIR__ . '/../storage/appointments.json'; }
+function store_path(): string {
+    $dir = __DIR__ . '/../storage';
+    // Vercel/serverless: project folder read-only hota hai, isliye /tmp use hota hai (temporary!)
+    if (!is_dir($dir) || !is_writable($dir)) return sys_get_temp_dir() . '/appointments.json';
+    return $dir . '/appointments.json';
+}
 function appointments_all(): array {
     $f = store_path();
     if (!is_file($f)) return [];

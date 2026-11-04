@@ -2,15 +2,15 @@
 require_once __DIR__ . '/../includes/functions.php';
 header('X-Robots-Tag: noindex, nofollow');
 
-if (isset($_GET['logout'])) { unset($_SESSION['admin']); header('Location: ./'); exit; }
+if (isset($_GET['logout'])) { admin_logout(); header('Location: ./'); exit; }
 $err = '';
 if (($_POST['login'] ?? null) !== null) {
     if (csrf_check($_POST['csrf'] ?? null) && hash_equals(cfg('admin_password'), (string)($_POST['pw'] ?? ''))) {
-        session_regenerate_id(true); $_SESSION['admin'] = true; header('Location: ./'); exit;
+        admin_login(); header('Location: ./'); exit;
     }
     $err = 'Wrong password';
 }
-if (empty($_SESSION['admin'])): ?>
+if (!admin_ok()): ?>
 <!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Admin login</title>
 <link rel="stylesheet" href="<?= e(asset('assets/css/style.css')) ?>"></head>
 <body class="adm-body"><form method="post" class="form adm-login"><h2>Admin Login</h2>

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 420" role="img" aria-label="Rehabilitation exercise session with resistance band and parallel bars">
+<defs><linearGradient id="a" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e6f6f8"/><stop offset="1" stop-color="#d3e9fb"/></linearGradient><linearGradient id="b" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e7c86"/><stop offset="1" stop-color="#2f80ed"/></linearGradient></defs>
+<rect width="520" height="420" fill="url(#a)"/>
+<rect y="340" width="520" height="80" fill="#c4dfe4"/>
+<rect x="30" y="36" width="150" height="110" rx="8" fill="#fff" stroke="#b9d8de" stroke-width="3"/><path d="M105 36v110M30 91h150" stroke="#d6e8ec" stroke-width="3"/>
+<!-- anatomy poster -->
+<rect x="360" y="40" width="120" height="150" rx="8" fill="#fff" stroke="#0e7c86" stroke-width="3"/>
+<g fill="#0e7c86" opacity=".85"><rect x="412" y="58" width="16" height="9" rx="4"/><rect x="409" y="70" width="22" height="9" rx="4"/><rect x="412" y="82" width="16" height="9" rx="4"/><rect x="409" y="94" width="22" height="9" rx="4"/><rect x="412" y="106" width="16" height="9" rx="4"/><rect x="409" y="118" width="22" height="9" rx="4"/><rect x="412" y="130" width="16" height="9" rx="4"/></g>
+<rect x="376" y="160" width="88" height="6" rx="3" fill="#c4dfe4"/><rect x="386" y="172" width="68" height="5" rx="2" fill="#c4dfe4"/>
+<!-- parallel bars -->
+<g stroke="#0a4f57" stroke-width="9" stroke-linecap="round"><path d="M80 350V250M300 350V250M70 250h240"/></g>
+<g stroke="#5b7480" stroke-width="6" stroke-linecap="round"><path d="M110 350V282M270 350V282M104 282h172" opacity=".0"/></g>
+<!-- patient walking between bars -->
+<g transform="translate(190 0)">
+<circle cx="0" cy="170" r="22" fill="#e9bf9a"/><path d="M-22 164 C-20 140 12 138 22 160 C10 152 -8 150 -22 164Z" fill="#3a2f2a"/>
+<path d="M-26 200 C-30 250 -26 290 -22 310 L-10 310 L0 262 L10 310 L24 310 C28 280 28 240 26 200 C16 192 -16 192 -26 200Z" fill="#12a4b0"/>
+<path d="M-24 205 L-48 252" stroke="#e9bf9a" stroke-width="12" stroke-linecap="round"/><path d="M24 205 L50 252" stroke="#e9bf9a" stroke-width="12" stroke-linecap="round"/>
+<path d="M-18 310 L-28 348 M16 310 L26 348" stroke="#2b3a52" stroke-width="12" stroke-linecap="round"/>
+</g>
+<!-- therapist -->
+<g transform="translate(396 0)">
+<circle cx="0" cy="232" r="20" fill="#f1c9a6"/><path d="M-20 226 C-18 204 14 204 20 226 C8 216 -8 216 -20 226Z" fill="#26232c"/>
+<path d="M-28 260 C-32 310 -30 340 -26 350 L26 350 C30 330 30 300 28 260 C16 252 -16 252 -28 260Z" fill="#fff" stroke="#c6dde2" stroke-width="2"/>
+<path d="M-8 254 L0 290 L8 254Z" fill="#0e7c86"/>
+</g>
+<!-- guide dashed -->
+<path d="M120 380 H360" stroke="#12a4b0" stroke-width="3" stroke-dasharray="3 9" stroke-linecap="round"/>
+<!-- balance ball + dumbbells -->
+<circle cx="460" cy="372" r="30" fill="url(#b)"/><path d="M440 360 Q460 346 480 360" stroke="#fff" stroke-width="3" fill="none" opacity=".6"/>
+<g transform="translate(40 384)"><rect width="46" height="8" rx="4" fill="#5b7480"/><rect x="-6" y="-6" width="12" height="20" rx="4" fill="#0e7c86"/><rect x="40" y="-6" width="12" height="20" rx="4" fill="#0e7c86"/></g>
+</svg>

@@ -1,0 +1,5 @@
+.env
+storage/appointments.json
+node_modules/
+*.log
+.vscode/

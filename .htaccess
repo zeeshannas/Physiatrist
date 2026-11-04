@@ -1,0 +1,37 @@
+Options -Indexes
+DirectoryIndex index.php
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Block direct access to private folders/files
+RewriteRule ^(storage|includes|data|cron)(/|$) - [F,L]
+RewriteRule ^config\.php$ - [F,L]
+RewriteRule ^\.env$ - [F,L]
+
+# Pretty URLs
+RewriteRule ^sitemap\.xml$ sitemap.php [L]
+RewriteRule ^robots\.txt$ robots.php [L]
+RewriteRule ^services/([a-z0-9-]+)/?$ service.php?slug=$1 [L,QSA]
+RewriteRule ^blog/([a-z0-9-]+)/?$ article.php?slug=$1 [L,QSA]
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^([a-z0-9-]+)/?$ $1.php [L,QSA]
+</IfModule>
+
+# Performance: compression + caching
+<IfModule mod_deflate.c>
+AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml application/json
+</IfModule>
+<IfModule mod_expires.c>
+ExpiresActive On
+ExpiresByType image/svg+xml "access plus 1 year"
+ExpiresByType text/css "access plus 1 year"
+ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+<IfModule mod_headers.c>
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>

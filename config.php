@@ -22,15 +22,14 @@ return [
         'Ex-Intern, Barki Advanced Physiotherapy Complex',
     ],
     'phone'       => '+92 307 6054492',
-    'whatsapp'    => '923076054492',            // country code ke sath, + ke baghair
-    'country_code'=> '92',                      // local numbers (03xx) ko WhatsApp format mein badalne ke liye
+    'whatsapp'    => '923076054492',           
+    'country_code'=> '92',                      
     'clinic_name' => 'Haleema Hospital Complex',
     'address'     => 'Nishtar Road, Al Raheem Colony, Multan',
     'city'        => 'Multan',
     'country'     => 'PK',
     'geo'         => ['lat' => 30.1700, 'lng' => 71.4400],
     'map_embed'   => 'https://www.google.com/maps?q=Haleema+Hospital+Complex+Nishtar+Road+Multan&output=embed',
-    // Card par sirf "Timing: 11AM to 4PM" likha hai, din nahi. Din yahan check/badal lein.
     'timings'     => [
         'Monday - Saturday' => '11:00 AM - 4:00 PM',
         'Sunday'            => 'Closed',
@@ -42,9 +41,7 @@ return [
         'youtube'   => '#',
         'linkedin'  => '#',
     ],
-    // Admin panel password (zaroor change karein!)
     'admin_password' => 'ChangeMe@123',
-    // Site ka full URL (SEO canonical/sitemap). Khali chorein to auto-detect hoga.
     'site_url'    => '',
     'timezone'    => 'Asia/Karachi',
     // Slots (24h) jo online booking mein dikhenge (11AM - 4PM)

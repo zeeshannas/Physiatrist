@@ -32,13 +32,11 @@ include __DIR__ . '/includes/header.php';
     </div>
   </div>
 </section>
-
 <section class="strip"><div class="wrap strip-in">
   <?php foreach ([['spine','Back & Neck Pain'],['brain','Stroke Rehab'],['sport','Sports Injury'],['nerve','Nerve Disorders'],['knee','Joint & Arthritis']] as $i): ?>
     <span><?= icon($i[0],22) ?> <?= e($i[1]) ?></span>
   <?php endforeach; ?>
 </div></section>
-
 <section class="sec"><div class="wrap two">
   <div class="reveal about-img"><img src="<?= e(photo("clinic", "clinic.svg")) ?>" alt="Modern rehabilitation clinic in <?= e(cfg('city')) ?>" loading="lazy" width="520" height="420"></div>
   <div class="reveal">
@@ -54,7 +52,6 @@ include __DIR__ . '/includes/header.php';
     <a class="btn btn-outline" href="<?= e(url('about')) ?>">Read full profile <?= icon('arrow',16) ?></a>
   </div>
 </div></section>
-
 <section class="sec alt" id="services-sec"><div class="wrap">
   <div class="sec-h wide reveal"><span class="eyebrow">Our Services</span><h2>Complete Physiotherapy &amp; Rehabilitation Care</h2>
   <p>From pain relief and injury recovery to dry needling, K-taping and fitness training, you get a complete plan under one roof.</p></div>
@@ -73,7 +70,6 @@ include __DIR__ . '/includes/header.php';
     <a class="btn btn-outline" href="<?= e(url('services')) ?>">View all services <?= icon('arrow',16) ?></a>
   </div>
 </div></section>
-
 <section class="sec"><div class="wrap">
   <div class="sec-h reveal"><span class="eyebrow">How It Works</span><h2>Your Recovery in 4 Simple Steps</h2></div>
   <div class="grid steps">
@@ -82,14 +78,12 @@ include __DIR__ . '/includes/header.php';
     <?php endforeach; ?>
   </div>
 </div></section>
-
 <section class="sec dark"><div class="wrap">
   <div class="sec-h reveal"><span class="eyebrow">Conditions We Treat</span><h2>Find Relief From</h2></div>
   <div class="chips reveal">
     <?php foreach ($CONTENT['conditions'] as $c): ?><span><?= e($c) ?></span><?php endforeach; ?>
   </div>
 </div></section>
-
 <section class="sec"><div class="wrap">
   <div class="sec-h reveal"><span class="eyebrow">Qualifications &amp; Training</span><h2>Trained, Certified and Hospital-Experienced</h2></div>
   <div class="grid cred">
@@ -99,7 +93,6 @@ include __DIR__ . '/includes/header.php';
       <ul class="ticks"><?php foreach (cfg('experience_list') as $x): ?><li><?= icon('check',18) ?> <?= e($x) ?></li><?php endforeach; ?></ul></div>
   </div>
 </div></section>
-
 <section class="sec alt"><div class="wrap two">
   <div class="reveal">
     <span class="eyebrow">Latest Articles</span><h2>Health Tips from Your Physiotherapist</h2>
@@ -112,14 +105,12 @@ include __DIR__ . '/includes/header.php';
     <?php endforeach; ?>
   </div>
 </div></section>
-
 <section class="sec"><div class="wrap narrow">
   <div class="sec-h reveal"><span class="eyebrow">FAQ</span><h2>Frequently Asked Questions</h2></div>
   <?php foreach (array_slice($CONTENT['faqs'], 0, 5) as $f): ?>
   <details class="faq reveal"><summary><?= e($f[0]) ?></summary><p><?= e($f[1]) ?></p></details>
   <?php endforeach; ?>
 </div></section>
-
 <section class="cta-band"><div class="wrap reveal">
   <h2>Don't let pain limit your life</h2>
   <p>Book your consultation today and take the first step toward recovery.</p>

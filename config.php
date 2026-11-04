@@ -1,14 +1,9 @@
 <?php
-/**
- * SITE CONFIG - yahan details change karein.
- * Details doctor ke visiting card se li gayi hain.
- */
 return [
     'site_name'   => 'Dr. Benish Abdul Sattar | Clinical Physiotherapist in Multan',
     'doctor'      => 'Dr. Benish Abdul Sattar',
     'title_short' => 'Clinical Physiotherapist (DPT)',
     'qualification' => 'Doctor of Physiotherapy (DPT)',
-    // About page par "Qualifications & Certifications" mein dikhenge
     'credentials' => [
         'Doctor of Physiotherapy (DPT)',
         'Certified K-Taping Practitioner',
@@ -24,7 +19,7 @@ return [
     'phone'       => '+92 307 6054492',
     'whatsapp'    => '923076054492',           
     'country_code'=> '92',                      
-    'email'       => 'benishsattar969@gmail.com',  // appointment notifications yahan aayengi; khali ho to email dikhegi nahi
+    'email'       => 'benishsattar969@gmail.com',  
     'clinic_name' => 'Haleema Hospital Complex',
     'address'     => 'Nishtar Road, Al Raheem Colony, Multan',
     'city'        => 'Multan',
@@ -43,7 +38,6 @@ return [
     'admin_password' => 'ChangeMe@123',
     'site_url'    => '',
     'timezone'    => 'Asia/Karachi',
-    // Slots (24h) jo online booking mein dikhenge (11AM - 4PM)
     'slots'       => ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30'],
     'closed_days' => [0], // 0 = Sunday
 ];

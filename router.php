@@ -1,5 +1,4 @@
 <?php
-// Sirf local testing ke liye (php -S). Apache par .htaccess ye kaam karta hai.
 $p = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $blocked = '#^/(storage|includes|data|cron)(/|$)|^/(config|router)\.php$#';
 if (preg_match($blocked, $p)) { http_response_code(403); exit('Forbidden'); }

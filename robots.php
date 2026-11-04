@@ -6,5 +6,4 @@ Allow: /
 Disallow: <?= base_path() ?>/admin/
 Disallow: <?= base_path() ?>/api/
 Disallow: <?= base_path() ?>/storage/
-
 Sitemap: <?= abs_url('sitemap.xml') ?>

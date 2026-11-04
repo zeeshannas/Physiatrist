@@ -100,3 +100,33 @@
 (function(){var t=document.getElementById('toTop');if(!t)return;
 addEventListener('scroll',function(){t.classList.toggle('show',scrollY>500)},{passive:true});
 t.addEventListener('click',function(){scrollTo({top:0,behavior:'smooth'})});})();
+
+/* ---------- Services slider ---------- */
+(function () {
+  var root = document.getElementById('svcSlider'); if (!root) return;
+  var track = root.querySelector('.sl-track'), prev = root.querySelector('.prev'), next = root.querySelector('.next');
+  function step() { var c = track.querySelector('.scard'); return c ? c.getBoundingClientRect().width + 24 : 300; }
+  function update() {
+    prev.disabled = track.scrollLeft < 8;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 8;
+    var bar = document.getElementById("slBar"), now = document.getElementById("slNow");
+    var max = track.scrollWidth - track.clientWidth, ratio = track.clientWidth / track.scrollWidth, p = max > 0 ? track.scrollLeft / max : 0;
+    if (bar) { bar.style.width = (ratio * 100) + "%"; bar.style.marginLeft = (p * (1 - ratio) * 100) + "%"; }
+    var cards = track.querySelectorAll(".scard").length, per = Math.max(1, Math.round(track.clientWidth / step()));
+    if (now) now.textContent = Math.min(cards, Math.round(p * (cards - per)) + per);
+  }
+  prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: 'smooth' }); });
+  next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: 'smooth' }); });
+  track.addEventListener('scroll', update, { passive: true }); addEventListener('resize', update); update();
+  // gentle autoplay (pauses on hover/touch, off if user prefers reduced motion)
+  if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var paused = false, vis = true;
+  ['touchstart'].forEach(function (e) { root.addEventListener(e, function () { paused = true; }, { passive: true }); });
+  ['touchend'].forEach(function (e) { root.addEventListener(e, function () { paused = false; }, { passive: true }); });
+  if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { vis = es[0].isIntersecting; }).observe(root);
+  setInterval(function () {
+    if (paused || !vis) return;
+    if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 8) track.scrollTo({ left: 0, behavior: 'smooth' });
+    else track.scrollBy({ left: step(), behavior: 'smooth' });
+  }, 3000);
+})();

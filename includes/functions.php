@@ -167,3 +167,30 @@ function wa_phone(string $p): string {
     return $p;
 }
 function fmt_time(string $t): string { return date('g:i A', strtotime($t)); }
+
+/* ---------- Service images (photo dalne par khud use hoti hai: assets/img/services/<slug>.jpg) ---------- */
+function service_img(string $slug): string {
+    foreach (['jpg','webp','png'] as $ext) {
+        if (is_file(__DIR__ . "/../assets/img/services/$slug.$ext")) return asset("assets/img/services/$slug.$ext");
+    }
+    return asset("assets/img/services/$slug.svg");
+}
+function service_card_legacy(string $slug, array $s): string {
+    return '<a class="card scard tilt reveal" href="' . e(url('services/' . $slug)) . '">'
+        . '<span class="s-img"><img src="' . e(service_img($slug)) . '" alt="' . e($s['title']) . '" width="400" height="280" loading="lazy"></span>'
+        . '<span class="s-body"><h3>' . e($s['title']) . '</h3>'
+        . '<p>' . e($s['short']) . '</p>'
+        . '<span class="more">Learn more ' . icon('arrow', 16) . '</span></span></a>';
+}
+
+/** Modern service card (image + glass badge + number + arrow button) */
+function service_card(string $slug, array $s): string {
+    global $SERVICES;
+    $idx = array_search($slug, array_keys($SERVICES), true);
+    $num = str_pad((string)(($idx === false ? 0 : $idx) + 1), 2, '0', STR_PAD_LEFT);
+    return '<a class="card scard tilt reveal" href="' . e(url('services/' . $slug)) . '">'
+        . '<span class="s-img"><img src="' . e(service_img($slug)) . '" alt="' . e($s['title']) . '" width="400" height="280" loading="lazy">'
+        . '<span class="s-badge">' . icon($s['icon'], 22) . '</span><span class="s-num">' . $num . '</span></span>'
+        . '<span class="s-body"><h3>' . e($s['title']) . '</h3><p>' . e($s['short']) . '</p>'
+        . '<span class="s-foot"><span class="s-more">Learn more</span><span class="s-go">' . icon('arrow', 18) . '</span></span></span></a>';
+}

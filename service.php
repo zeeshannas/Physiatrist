@@ -21,6 +21,7 @@ include __DIR__ . '/includes/header.php';
 <h1><?= e($s['title']) ?> in <?= e(cfg('city')) ?></h1><p><?= e($s['short']) ?></p></div></section>
 <section class="sec"><div class="wrap article-grid">
   <article class="prose">
+    <div class="svc-hero"><img src="<?= e(service_img($slug)) ?>" alt="<?= e($s['title']) ?>" width="400" height="280"></div>
     <?php foreach ($s['body'] as $p): ?><p><?= e($p) ?></p><?php endforeach; ?>
     <h2>Benefits of treatment with <?= e(cfg('doctor')) ?></h2>
     <ul class="ticks"><?php foreach ($s['benefits'] as $b): ?><li><?= icon('check',18) ?> <?= e($b) ?></li><?php endforeach; ?></ul>

@@ -15,7 +15,7 @@ include __DIR__ . '/includes/header.php';
   <div class="wrap hero-in">
     <div class="hero-txt reveal">
       <span class="pill"><?= icon('shield',16) ?> Board-Certified PM&amp;R Specialist</span>
-      <h1>Move Better. <span class="grad">Live Pain-Free.</span><br>Expert Physiatrist in <?= e(cfg('city')) ?></h1>
+      <h1>Move Better. <span class="grad">Live Pain-Free.</span></h1>
       <p>Advanced non-surgical treatment for back &amp; neck pain, sciatica, stroke recovery, sports injuries and nerve disorders by <b><?= e(cfg('doctor')) ?></b>.</p>
       <div class="cta">
         <a class="btn" href="<?= e(url('book')) ?>"><?= icon('calendar',18) ?> Book Appointment</a>
@@ -55,18 +55,22 @@ include __DIR__ . '/includes/header.php';
   </div>
 </div></section>
 
-<section class="sec alt"><div class="wrap">
-  <div class="sec-h reveal"><span class="eyebrow">Our Services</span><h2>Comprehensive Physical Medicine &amp; Rehabilitation</h2>
+<section class="sec alt" id="services-sec"><div class="wrap">
+  <div class="sec-h wide reveal"><span class="eyebrow">Our Services</span><h2>Comprehensive Physical Medicine &amp; Rehabilitation</h2>
   <p>From acute injuries to long-term neurological recovery, you get a complete plan under one roof.</p></div>
-  <div class="grid cards">
-    <?php foreach ($SERVICES as $slug => $s): ?>
-    <a class="card tilt reveal" href="<?= e(url('services/'.$slug)) ?>">
-      <span class="card-ico"><?= icon($s['icon'],30) ?></span>
-      <h3><?= e($s['title']) ?></h3>
-      <p><?= e($s['short']) ?></p>
-      <span class="more">Learn more <?= icon('arrow',16) ?></span>
-    </a>
-    <?php endforeach; ?>
+  <div class="slider reveal" id="svcSlider">
+    <button type="button" class="sl-btn prev" aria-label="Previous services">&#8249;</button>
+    <div class="sl-track">
+      <?php foreach ($SERVICES as $slug => $s): ?>
+      <?= str_replace(' tilt reveal', '', service_card($slug, $s)) ?>
+      <?php endforeach; ?>
+    </div>
+    <button type="button" class="sl-btn next" aria-label="Next services">&#8250;</button>
+  </div>
+  <div class="sl-foot reveal">
+    <div class="sl-bar" aria-hidden="true"><i id="slBar"></i></div>
+    <span class="sl-count" aria-hidden="true"><b id="slNow">1</b> / <?= count($SERVICES) ?></span>
+    <a class="btn btn-outline" href="<?= e(url('services')) ?>">View all services <?= icon('arrow',16) ?></a>
   </div>
 </div></section>
 

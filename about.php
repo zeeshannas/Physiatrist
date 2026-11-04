@@ -10,7 +10,7 @@ $seo = [
 ];
 include __DIR__ . '/includes/header.php';
 ?>
-<section class="page-h"><div class="wrap"><nav class="crumb"><a href="<?= e(url()) ?>">Home</a> / About</nav><h1>About <?= e(cfg('doctor')) ?></h1><p><?= e(cfg('title_short')) ?></p></div></section>
+<section class="page-h"><div class="wrap"><nav class="crumb"><a href="<?= e(url()) ?>">Home</a> / About</nav><h1><?= e(cfg('doctor')) ?></h1><p><?= e(cfg('title_short')) ?></p></div></section>
 <section class="sec"><div class="wrap two">
   <div class="about-img"><img src="<?= e(photo("doctor", "doctor.svg")) ?>" alt="<?= e(cfg('doctor')) ?>" width="420" height="480" loading="lazy"></div>
   <div class="prose">

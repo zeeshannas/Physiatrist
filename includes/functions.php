@@ -67,6 +67,10 @@ function icon(string $n, int $s = 28): string {
      'youtube'=> '<path d="M22.5 7.2a2.7 2.7 0 0 0-1.9-1.9C19 4.8 12 4.8 12 4.8s-7 0-8.6.5A2.7 2.7 0 0 0 1.5 7.2 28 28 0 0 0 1 12a28 28 0 0 0 .5 4.8 2.7 2.7 0 0 0 1.9 1.9c1.6.5 8.6.5 8.6.5s7 0 8.6-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 23 12a28 28 0 0 0-.5-4.8z"/><path d="m10 15 5-3-5-3z"/>',
      'linkedin'=> '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>',
      'up'     => '<path d="M12 19V5M5 12l7-7 7 7"/>',
+     'needle' => '<path d="M20 4 4 20M17 3l4 4M7 17l-3 3"/><path d="m14 6 4 4"/>',
+     'tape'   => '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3.5"/><path d="M21 12h2"/>',
+     'cup'    => '<path d="M5 8h14l-1.5 9a3 3 0 0 1-3 2.5h-5a3 3 0 0 1-3-2.5z"/><path d="M9 8V5h6v3"/>',
+     'dumbbell'=> '<path d="M6 7v10M18 7v10M3 10v4M21 10v4M6 12h12"/>',
      'send'   => '<path d="m22 2-11 11M22 2l-7 20-4-9-9-4z"/>',
     ];
     $p = $paths[$n] ?? $paths['doctor'];
@@ -77,16 +81,15 @@ function icon(string $n, int $s = 28): string {
 function seo(array $o = []): array {
     return array_merge([
         'title' => cfg('site_name'),
-        'desc'  => 'Consult ' . cfg('doctor') . ', leading physiatrist in ' . cfg('city') . ' for back pain, neck pain, stroke rehabilitation, sports injury and nerve pain. Book online.',
+        'desc'  => 'Consult ' . cfg('doctor') . ', clinical physiotherapist (DPT) in ' . cfg('city') . ' for back pain, neck pain, stroke rehabilitation, sports injury and nerve pain. Book online.',
         'path'  => '', 'type' => 'website', 'schema' => [], 'keywords' => '', 'noindex' => false,
     ], $o);
 }
 function schema_physician(): array {
     return [
-      '@context'=>'https://schema.org','@type'=>['Physician','MedicalBusiness'],
-      'name'=>cfg('clinic_name'),'founder'=>['@type'=>'Person','name'=>cfg('doctor')],
-      'medicalSpecialty'=>'PhysicalMedicineAndRehabilitation',
-      'url'=>site_url(),'telephone'=>cfg('phone'),'email'=>cfg('email'),
+      '@context'=>'https://schema.org','@type'=>['Physiotherapy','MedicalBusiness'],
+      'name'=>cfg('clinic_name'),'founder'=>['@type'=>'Person','name'=>cfg('doctor'),'jobTitle'=>'Clinical Physiotherapist'],
+      'url'=>site_url(),'telephone'=>cfg('phone'),
       'image'=>abs_url('assets/img/og-cover.svg'),
       'address'=>['@type'=>'PostalAddress','streetAddress'=>cfg('address'),'addressLocality'=>cfg('city'),'addressCountry'=>cfg('country')],
       'geo'=>['@type'=>'GeoCoordinates','latitude'=>cfg('geo')['lat'],'longitude'=>cfg('geo')['lng']],

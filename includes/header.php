@@ -35,16 +35,16 @@ $cur = explode('/', $cur)[0];
 <a class="skip" href="#main">Skip to content</a>
 <div class="topbar">
   <div class="wrap">
-    <span><?= icon('clock',16) ?> Mon-Fri 4PM-9PM &middot; Sat 5PM-8PM</span>
+    <span><?= icon('clock',16) ?> Mon-Sat 11AM-4PM</span>
     <span class="tb-right"><a href="tel:<?= e(preg_replace('/\s+/','',cfg('phone'))) ?>"><?= icon('phone',16) ?> <?= e(cfg('phone')) ?></a>
-    <a href="mailto:<?= e(cfg('email')) ?>"><?= icon('mail',16) ?> <?= e(cfg('email')) ?></a></span>
+</span>
   </div>
 </div>
 <header class="site-header" id="hdr">
   <div class="wrap hdr-in">
     <a class="logo" href="<?= e(url()) ?>" aria-label="<?= e(cfg('doctor')) ?> home">
       <span class="logo-mark"><?= icon('spine',26) ?></span>
-      <span><b><?= e(cfg('doctor')) ?></b><small>Physiatrist &middot; PM&amp;R</small></span>
+      <span><b><?= e(cfg('doctor')) ?></b><small>Clinical Physiotherapist &middot; DPT</small></span>
     </a>
     <button class="burger" id="burger" aria-label="Menu" aria-expanded="false"><?= icon('menu',26) ?></button>
     <nav id="nav" aria-label="Main">

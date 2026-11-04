@@ -16,7 +16,7 @@ foreach ($rows as &$r) {
     $text = "Reminder: Dear {$r['name']}, your appointment with " . cfg('doctor') . " is tomorrow, $when. Booking ID {$r['id']}.";
     if (!empty($r['email'])) {
         @mail($r['email'], 'Appointment reminder - ' . $r['id'], $text . "\n\n" . cfg('clinic_name') . "\n" . cfg('address') . "\n" . cfg('phone'),
-              'From: ' . cfg('clinic_name') . ' <' . cfg('email') . '>');
+              'From: ' . cfg('clinic_name') . ' <noreply@' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . '>');
     }
     $links[] = $r['name'] . ': https://wa.me/' . wa_phone($r['phone']) . '?text=' . rawurlencode($text);
     $r['reminded'] = true;
@@ -24,7 +24,6 @@ foreach ($rows as &$r) {
 unset($r);
 appointments_save($rows);
 if ($links) {
-    @mail(cfg('email'), 'Tomorrow\'s WhatsApp reminders (' . count($links) . ')', implode("\n\n", $links), 'From: ' . cfg('email'));
     echo implode(PHP_EOL, $links) . PHP_EOL;
 }
 echo 'Done. Reminders processed: ' . count($links) . PHP_EOL;

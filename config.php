@@ -1,31 +1,41 @@
 <?php
 /**
- * SITE CONFIG - yahan apni details change karein.
+ * SITE CONFIG - yahan details change karein.
+ * Details doctor ke visiting card se li gayi hain.
  */
 return [
-    'site_name'   => 'Dr. Ahmed Khan | Physiatrist',
-    'doctor'      => 'Dr. Ahmed Khan',
-    'title_short' => 'Physiatrist & Rehabilitation Specialist',
-    'qualification' => 'MBBS, FCPS (PM&R), Fellowship in Interventional Pain Medicine',
-    'experience'  => 12,
-    'patients'    => '15,000+',
-    'phone'       => '+92 300 0000000',
-    'whatsapp'    => '923000000000',            // country code ke sath, + ke baghair
+    'site_name'   => 'Dr. Benish Abdul Sattar | Clinical Physiotherapist in Multan',
+    'doctor'      => 'Dr. Benish Abdul Sattar',
+    'title_short' => 'Clinical Physiotherapist (DPT)',
+    'qualification' => 'Doctor of Physiotherapy (DPT)',
+    // About page par "Qualifications & Certifications" mein dikhenge
+    'credentials' => [
+        'Doctor of Physiotherapy (DPT)',
+        'Certified K-Taping Practitioner',
+        'Certified Dry Needling Practitioner',
+        'Certified Fitness & Personal Trainer',
+        'Certified Hijama Therapist',
+    ],
+    'experience_list' => [
+        'Ex-Intern, South Punjab Hospital, Multan',
+        'Ex-Intern, Children Hospital, Multan',
+        'Ex-Intern, Barki Advanced Physiotherapy Complex',
+    ],
+    'phone'       => '+92 307 6054492',
+    'whatsapp'    => '923076054492',            // country code ke sath, + ke baghair
     'country_code'=> '92',                      // local numbers (03xx) ko WhatsApp format mein badalne ke liye
-    'email'       => 'info@example.com',        // appointment notifications yahan aayengi
-    'clinic_name' => 'Advanced Rehab & Pain Clinic',
-    'address'     => 'Nishtar Road, Multan, Punjab, Pakistan',
+    'clinic_name' => 'Haleema Hospital Complex',
+    'address'     => 'Nishtar Road, Al Raheem Colony, Multan',
     'city'        => 'Multan',
     'country'     => 'PK',
-    'geo'         => ['lat' => 30.1575, 'lng' => 71.5249],
-    'map_embed'   => 'https://www.google.com/maps?q=Nishtar+Road+Multan&output=embed',
+    'geo'         => ['lat' => 30.1700, 'lng' => 71.4400],
+    'map_embed'   => 'https://www.google.com/maps?q=Haleema+Hospital+Complex+Nishtar+Road+Multan&output=embed',
+    // Card par sirf "Timing: 11AM to 4PM" likha hai, din nahi. Din yahan check/badal lein.
     'timings'     => [
-        'Monday - Friday' => '4:00 PM - 9:00 PM',
-        'Saturday'        => '5:00 PM - 8:00 PM',
-        'Sunday'          => 'Closed',
+        'Monday - Saturday' => '11:00 AM - 4:00 PM',
+        'Sunday'            => 'Closed',
     ],
-    // schema.org openingHours ke liye
-    'opening_hours' => ['Mo-Fr 16:00-21:00', 'Sa 17:00-20:00'],
+    'opening_hours' => ['Mo-Sa 11:00-16:00'],
     'social' => [
         'facebook'  => '#',
         'instagram' => '#',
@@ -37,7 +47,7 @@ return [
     // Site ka full URL (SEO canonical/sitemap). Khali chorein to auto-detect hoga.
     'site_url'    => '',
     'timezone'    => 'Asia/Karachi',
-    // Slots (24h) jo online booking mein dikhenge
-    'slots'       => ['16:00','16:30','17:00','17:30','18:00','18:30','19:00','19:30','20:00','20:30'],
+    // Slots (24h) jo online booking mein dikhenge (11AM - 4PM)
+    'slots'       => ['11:00','11:30','12:00','12:30','13:00','13:30','14:00','14:30','15:00','15:30'],
     'closed_days' => [0], // 0 = Sunday
 ];

@@ -14,7 +14,7 @@
 
     <div class="fgrid">
       <div class="f-col f-brand reveal">
-        <a class="logo light" href="<?= e(url()) ?>"><span class="logo-mark"><?= icon('spine',26) ?></span><span><b><?= e(cfg('doctor')) ?></b><small>Physiatrist &middot; PM&amp;R</small></span></a>
+        <a class="logo light" href="<?= e(url()) ?>"><span class="logo-mark"><?= icon('spine',26) ?></span><span><b><?= e(cfg('doctor')) ?></b><small>Clinical Physiotherapist &middot; DPT</small></span></a>
         <p>🎓 <?= e(cfg('qualification')) ?>.<br>Evidence-based pain relief and rehabilitation in <?= e(cfg('city')) ?>.</p>
         <div class="soc">
           <?php foreach (cfg('social') as $n => $l): ?>
@@ -43,7 +43,6 @@
         <ul class="f-info">
           <li><span class="em">📍</span><span><?= e(cfg('clinic_name')) ?><br><?= e(cfg('address')) ?></span></li>
           <li><span class="em">📞</span><a href="tel:<?= e(preg_replace('/\s+/','',cfg('phone'))) ?>"><?= e(cfg('phone')) ?></a></li>
-          <li><span class="em">✉️</span><a href="mailto:<?= e(cfg('email')) ?>"><?= e(cfg('email')) ?></a></li>
         </ul>
         <div class="f-hours">
           <b>🕒 Clinic Hours</b>

@@ -47,9 +47,8 @@ $_SESSION['bk'][] = time();
 
 $when = date('l, j F Y', strtotime($date)) . ' at ' . fmt_time($time);
 
-// ---- Automation 1: email to clinic + patient (silently skipped if mail not configured)
-$hdr = "From: " . cfg('clinic_name') . " <" . cfg('email') . ">\r\nContent-Type: text/plain; charset=UTF-8";
-@mail(cfg('email'), "New appointment $id - $name", "ID: $id\nName: $name\nPhone: $phone\nEmail: $email\nService: $svc\nWhen: $when\nNotes: $msg", $hdr);
+// ---- Automation 1: confirmation email to the patient (only if they gave an email; silently skipped if mail is not configured)
+$hdr = "From: " . cfg('clinic_name') . " <noreply@" . preg_replace('/:\d+$/', '', $_SERVER['HTTP_HOST'] ?? 'localhost') . ">\r\nContent-Type: text/plain; charset=UTF-8";
 if ($email) {
     @mail($email, "Appointment confirmed - $id",
       "Dear $name,\n\nYour appointment with " . cfg('doctor') . " is confirmed.\n\nWhen: $when\nWhere: " . cfg('clinic_name') . ", " . cfg('address') . "\nBooking ID: $id\n\nPlease arrive 10 minutes early and bring previous reports.\nTo reschedule call " . cfg('phone') . ".\n\nRegards,\n" . cfg('clinic_name'), $hdr);

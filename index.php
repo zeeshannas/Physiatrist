@@ -2,9 +2,9 @@
 require_once __DIR__ . '/includes/functions.php';
 $use3d = true;
 $seo = [
-  'title' => 'Best Physiatrist in ' . cfg('city') . ' | Back Pain, Stroke & Sports Rehab - ' . cfg('doctor'),
-  'desc'  => cfg('doctor') . ' is a trusted physiatrist (PM&R specialist) in ' . cfg('city') . ' treating back pain, neck pain, sciatica, stroke, sports injuries and nerve pain without surgery. Book online today.',
-  'keywords' => 'physiatrist in ' . cfg('city') . ', physical medicine and rehabilitation, back pain specialist, stroke rehabilitation, pain management doctor',
+  'title' => 'Best Physiotherapist in ' . cfg('city') . ' | Back Pain, Dry Needling & Rehab - ' . cfg('doctor'),
+  'desc'  => cfg('doctor') . ', Doctor of Physiotherapy (DPT), at ' . cfg('clinic_name') . ', ' . cfg('city') . '. Physiotherapy for back pain, neck pain, sciatica, stroke and sports injuries with dry needling, K-taping and hijama. Book online.',
+  'keywords' => 'physiotherapist in ' . cfg('city') . ', physiotherapy ' . cfg('city') . ', DPT, dry needling, K-taping, hijama, back pain treatment, stroke rehabilitation',
   'path' => '',
   'schema' => [faq_schema(array_slice($CONTENT['faqs'], 0, 6))],
 ];
@@ -14,21 +14,21 @@ include __DIR__ . '/includes/header.php';
   <canvas id="hero3d" aria-hidden="true"></canvas>
   <div class="wrap hero-in">
     <div class="hero-txt reveal">
-      <span class="pill"><?= icon('shield',16) ?> Board-Certified PM&amp;R Specialist</span>
+      <span class="pill"><?= icon('shield',16) ?> Doctor of Physiotherapy (DPT)</span>
       <h1>Move Better. <span class="grad">Live Pain-Free.</span></h1>
-      <p>Advanced non-surgical treatment for back &amp; neck pain, sciatica, stroke recovery, sports injuries and nerve disorders by <b><?= e(cfg('doctor')) ?></b>.</p>
+      <p>Expert physiotherapy for back &amp; neck pain, sciatica, stroke recovery and sports injuries, with dry needling, K-taping and personalised exercise programs by <b><?= e(cfg('doctor')) ?></b>.</p>
       <div class="cta">
         <a class="btn" href="<?= e(url('book')) ?>"><?= icon('calendar',18) ?> Book Appointment</a>
         <a class="btn btn-ghost" href="<?= e(wa_link('Hello Doctor, I need a consultation.')) ?>" target="_blank" rel="noopener"><?= icon('wa',18) ?> WhatsApp Us</a>
       </div>
       <ul class="trust">
-        <li><b><?= (int)cfg('experience') ?>+</b> Years Experience</li>
-        <li><b><?= e(cfg('patients')) ?></b> Patients Treated</li>
-        <li><b>4.9</b> <?= icon('star',14) ?> Patient Rating</li>
+        <li><b>DPT</b> Doctor of Physiotherapy</li>
+        <li><b><?= count(cfg('credentials')) - 1 ?></b> Professional Certifications</li>
+        <li><b><?= count(cfg('experience_list')) ?></b> Hospital Internships</li>
       </ul>
     </div>
     <div class="hero-card">
-      <img src="<?= e(photo("hero", "hero-exam.svg")) ?>" alt="<?= e(cfg("doctor")) ?> examining a patient's spine" width="560" height="520" fetchpriority="high">
+      <img src="<?= e(photo("hero", "hero-exam.svg")) ?>" alt="Physiotherapist assessing a patient's back at <?= e(cfg("clinic_name")) ?>, <?= e(cfg("city")) ?>" width="560" height="520" fetchpriority="high">
     </div>
   </div>
 </section>
@@ -43,21 +43,21 @@ include __DIR__ . '/includes/header.php';
   <div class="reveal about-img"><img src="<?= e(photo("clinic", "clinic.svg")) ?>" alt="Modern rehabilitation clinic in <?= e(cfg('city')) ?>" loading="lazy" width="520" height="420"></div>
   <div class="reveal">
     <span class="eyebrow">About the Doctor</span>
-    <h2>A Physiatrist Who Treats the Cause, Not Just the Pain</h2>
-    <p><?= e(cfg('doctor')) ?> (<?= e(cfg('qualification')) ?>) has helped more than <?= e(cfg('patients')) ?> patients regain movement and return to the life they love. Every plan begins with an accurate diagnosis and is explained in simple language.</p>
+    <h2>A Physiotherapist Who Treats the Cause, Not Just the Pain</h2>
+    <p><?= e(cfg('doctor')) ?> (<?= e(cfg('qualification')) ?>) is a clinical physiotherapist at <?= e(cfg('clinic_name')) ?>, <?= e(cfg('city')) ?>, with hospital training at South Punjab Hospital, Children Hospital and Barki Advanced Physiotherapy Complex. Every plan begins with a careful assessment and is explained in simple language.</p>
     <ul class="ticks">
-      <li><?= icon('check',18) ?> Detailed diagnosis with ultrasound &amp; EMG/NCV</li>
+      <li><?= icon('check',18) ?> Careful assessment of movement, posture and strength</li>
       <li><?= icon('check',18) ?> Personalised, goal-based rehabilitation</li>
-      <li><?= icon('check',18) ?> Minimal medication, maximum function</li>
-      <li><?= icon('check',18) ?> Clear costs and honest advice on surgery</li>
+      <li><?= icon('check',18) ?> Dry needling, K-taping and hijama by a certified practitioner</li>
+      <li><?= icon('check',18) ?> Honest advice, with referral to a doctor when needed</li>
     </ul>
     <a class="btn btn-outline" href="<?= e(url('about')) ?>">Read full profile <?= icon('arrow',16) ?></a>
   </div>
 </div></section>
 
 <section class="sec alt" id="services-sec"><div class="wrap">
-  <div class="sec-h wide reveal"><span class="eyebrow">Our Services</span><h2>Comprehensive Physical Medicine &amp; Rehabilitation</h2>
-  <p>From acute injuries to long-term neurological recovery, you get a complete plan under one roof.</p></div>
+  <div class="sec-h wide reveal"><span class="eyebrow">Our Services</span><h2>Complete Physiotherapy &amp; Rehabilitation Care</h2>
+  <p>From pain relief and injury recovery to dry needling, K-taping and fitness training, you get a complete plan under one roof.</p></div>
   <div class="slider reveal" id="svcSlider">
     <button type="button" class="sl-btn prev" aria-label="Previous services">&#8249;</button>
     <div class="sl-track">
@@ -77,7 +77,7 @@ include __DIR__ . '/includes/header.php';
 <section class="sec"><div class="wrap">
   <div class="sec-h reveal"><span class="eyebrow">How It Works</span><h2>Your Recovery in 4 Simple Steps</h2></div>
   <div class="grid steps">
-    <?php foreach ([['Book Online','Choose a date and time. Instant confirmation by email &amp; WhatsApp.'],['Assessment','Detailed examination and, only if needed, targeted tests.'],['Personal Plan','A clear treatment plan with realistic timelines.'],['Recovery','Guided therapy, follow-ups and a prevention program.']] as $i => $st): ?>
+    <?php foreach ([['Book Online','Choose a date and time. Instant confirmation by email &amp; WhatsApp.'],['Assessment','Detailed physical assessment of your movement, posture and strength.'],['Personal Plan','A clear treatment plan with realistic timelines.'],['Recovery','Guided therapy, follow-ups and a prevention program.']] as $i => $st): ?>
     <div class="step reveal"><span class="num"><?= $i+1 ?></span><h3><?= $st[0] ?></h3><p><?= $st[1] ?></p></div>
     <?php endforeach; ?>
   </div>
@@ -91,21 +91,18 @@ include __DIR__ . '/includes/header.php';
 </div></section>
 
 <section class="sec"><div class="wrap">
-  <div class="sec-h reveal"><span class="eyebrow">Patient Stories</span><h2>Trusted by Patients Across <?= e(cfg('city')) ?></h2></div>
-  <div class="grid t3">
-    <?php foreach ($CONTENT['testimonials'] as $t): ?>
-    <figure class="testi tilt reveal">
-      <div class="stars"><?= str_repeat(icon('star',16), 5) ?></div>
-      <blockquote>&ldquo;<?= e($t[2]) ?>&rdquo;</blockquote>
-      <figcaption><b><?= e($t[0]) ?></b><small><?= e($t[1]) ?></small></figcaption>
-    </figure>
-    <?php endforeach; ?>
+  <div class="sec-h reveal"><span class="eyebrow">Qualifications &amp; Training</span><h2>Trained, Certified and Hospital-Experienced</h2></div>
+  <div class="grid cred">
+    <div class="cred-box reveal"><h3><?= icon('shield',22) ?> Qualifications &amp; Certifications</h3>
+      <ul class="ticks"><?php foreach (cfg('credentials') as $x): ?><li><?= icon('check',18) ?> <?= e($x) ?></li><?php endforeach; ?></ul></div>
+    <div class="cred-box reveal"><h3><?= icon('pin',22) ?> Hospital Experience</h3>
+      <ul class="ticks"><?php foreach (cfg('experience_list') as $x): ?><li><?= icon('check',18) ?> <?= e($x) ?></li><?php endforeach; ?></ul></div>
   </div>
 </div></section>
 
 <section class="sec alt"><div class="wrap two">
   <div class="reveal">
-    <span class="eyebrow">Latest Articles</span><h2>Health Tips from Your Physiatrist</h2>
+    <span class="eyebrow">Latest Articles</span><h2>Health Tips from Your Physiotherapist</h2>
     <p>Practical, evidence-based guidance you can use today.</p>
     <a class="btn btn-outline" href="<?= e(url('blog')) ?>">All articles <?= icon('arrow',16) ?></a>
   </div>

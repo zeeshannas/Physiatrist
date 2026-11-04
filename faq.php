@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 $seo = [
-  'title' => 'FAQ - Physiatrist Questions Answered | ' . cfg('doctor'),
-  'desc'  => 'Answers to common questions about physiatry, pain treatment, rehabilitation, appointments and what to expect at your first visit.',
+  'title' => 'FAQ - Physiotherapy Questions Answered | ' . cfg('doctor'),
+  'desc'  => 'Answers to common questions about physiotherapy, dry needling, K-taping, rehabilitation, appointments and what to expect at your first visit.',
   'path'  => 'faq',
   'schema'=> [breadcrumb_schema(['Home'=>'','FAQ'=>'faq']), faq_schema($CONTENT['faqs'])],
 ];

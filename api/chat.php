@@ -3,21 +3,29 @@ require_once __DIR__ . '/../includes/functions.php';
 header('Content-Type: application/json; charset=utf-8');
 
 $q = mb_strtolower(trim(strip_tags($_POST['q'] ?? '')));
+$timings = [];
+foreach (cfg('timings') as $d => $t) $timings[] = "$d: $t";
+
 $rules = [
+  ['/(emergency|urgent|chest pain|cannot breathe|bladder|bowel)/', 'This sounds urgent. Please go to the nearest emergency department or call your local emergency number immediately.', []],
   ['/(book|appointment|visit|slot|schedule|booking)/', 'You can book online in under a minute. Pick a date and time here: ' . abs_url('book'), ['Clinic timings','Fees','Location']],
-  ['/(time|timing|open|hour|close|when)/', "Clinic timings: Mon-Fri 4PM-9PM, Saturday 5PM-8PM, Sunday closed.", ['Book appointment','Location']],
-  ['/(fee|fees|price|cost|charges|rate)/', 'Fees depend on the consultation and any tests or procedures. Please call ' . cfg('phone') . ' or WhatsApp us for the latest fee details.', ['Book appointment']],
-  ['/(where|location|address|map|direction)/', 'We are at ' . cfg('address') . '. Map: ' . abs_url('contact'), ['Clinic timings','Book appointment']],
-  ['/(back|spine|lumbar|disc|sciatica)/', 'Back pain and sciatica are our most common problems. Most improve without surgery with the right exercise, posture and, if needed, injections. See: ' . abs_url('services/back-pain-treatment'), ['Book appointment']],
-  ['/(neck|cervical|shoulder)/', 'Neck and shoulder pain are treated with targeted therapy and guided injections when required. See: ' . abs_url('services/neck-pain-cervical-spondylosis'), ['Book appointment']],
+  ['/(time|timing|open|hour|close|when)/', 'Clinic timings - ' . implode(', ', $timings) . '.', ['Book appointment','Location']],
+  ['/(fee|fees|price|cost|charges|rate)/', 'Fees depend on the treatment. Please call ' . cfg('phone') . ' or WhatsApp us for the latest fee details.', ['Book appointment']],
+  ['/(where|location|address|map|direction)/', 'We are at ' . cfg('clinic_name') . ', ' . cfg('address') . '. Map: ' . abs_url('contact'), ['Clinic timings','Book appointment']],
+  ['/(dry needl|needle|trigger point)/', 'Dry needling is done by a certified practitioner for tight muscle knots, as part of a physiotherapy plan. See: ' . abs_url('services/dry-needling-therapy'), ['Book appointment']],
+  ['/(tape|taping|k-tap|kinesio)/', 'K-taping gives flexible support to muscles and joints. See: ' . abs_url('services/k-taping-therapy'), ['Book appointment']],
+  ['/(hijama|cupping)/', 'Hijama (cupping) is offered by a certified hijama therapist with single-use sterile equipment. See: ' . abs_url('services/hijama-cupping-therapy'), ['Book appointment']],
+  ['/(fitness|trainer|gym|personal train|weight)/', 'We offer safe, personalised fitness programs. See: ' . abs_url('services/fitness-personal-training'), ['Book appointment']],
+  ['/(back|spine|lumbar|disc|sciatica)/', 'Back pain and sciatica are among the most common problems we treat, using exercise, manual therapy and posture correction. See: ' . abs_url('services/back-pain-treatment'), ['Book appointment']],
+  ['/(neck|cervical|shoulder)/', 'Neck and shoulder pain are treated with manual therapy, exercise and dry needling where suitable. See: ' . abs_url('services/neck-pain-cervical-spondylosis'), ['Book appointment']],
   ['/(stroke|paralysis|hemiplegia|brain)/', 'Early stroke rehabilitation gives the best recovery. Details: ' . abs_url('services/stroke-rehabilitation'), ['Book appointment']],
-  ['/(knee|arthritis|joint)/', 'Knee arthritis can often be managed without surgery. Details: ' . abs_url('services/knee-pain-osteoarthritis'), ['Book appointment']],
-  ['/(sport|injury|ligament|acl)/', 'We offer sports injury rehabilitation with safe return-to-play plans: ' . abs_url('services/sports-injury-rehabilitation'), ['Book appointment']],
-  ['/(physiatrist|what is|pm&r|rehab)/', 'A physiatrist is a Physical Medicine & Rehabilitation doctor who treats pain and disability without surgery whenever possible: ' . abs_url('faq'), ['Book appointment','Services']],
-  ['/(service|treat|offer)/', 'We treat back/neck pain, stroke, sports injuries, arthritis, nerve problems and pediatric conditions: ' . abs_url('services'), ['Book appointment']],
+  ['/(knee|arthritis|joint)/', 'Knee pain and arthritis respond well to strengthening and guided exercise. Details: ' . abs_url('services/knee-pain-osteoarthritis'), ['Book appointment']],
+  ['/(sport|injury|ligament|acl|sprain)/', 'We offer sports injury rehabilitation with safe return-to-play plans: ' . abs_url('services/sports-injury-rehabilitation'), ['Book appointment']],
+  ['/(child|kid|baby|pediatric|paediatric)/', 'We offer gentle, play-based physiotherapy for children: ' . abs_url('services/pediatric-rehabilitation'), ['Book appointment']],
+  ['/(physio|dpt|doctor|qualif|who)/', cfg('doctor') . ' is a Doctor of Physiotherapy (DPT), certified in dry needling, K-taping, fitness training and hijama therapy. More: ' . abs_url('about'), ['Book appointment','Services']],
+  ['/(service|treat|offer)/', 'We offer physiotherapy for pain, injuries, stroke and children, plus dry needling, K-taping, hijama and fitness training: ' . abs_url('services'), ['Book appointment']],
   ['/(phone|call|number|contact|whatsapp)/', 'Call ' . cfg('phone') . ' or WhatsApp: ' . wa_link('Hello Doctor'), ['Book appointment']],
   ['/(hi|hello|salam|assalam|hey)/', 'Hello! I am the clinic assistant. How can I help you today?', ['Book appointment','Clinic timings','Services']],
-  ['/(emergency|urgent|chest pain|cannot breathe|bladder|bowel)/', 'This sounds urgent. Please go to the nearest emergency department or call your local emergency number immediately.', []],
 ];
 $reply = 'I am not sure I understood. You can ask about appointments, timings, fees, location or a condition such as back pain. Or WhatsApp us: ' . wa_link('Hello Doctor');
 $quick = ['Book appointment','Clinic timings','Services'];

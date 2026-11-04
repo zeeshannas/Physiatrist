@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/includes/functions.php';
 $seo = [
-  'title' => 'Book Appointment Online | ' . cfg('doctor') . ', Physiatrist in ' . cfg('city'),
-  'desc'  => 'Book your physiatrist appointment online in under a minute. Instant confirmation by email and WhatsApp.',
+  'title' => 'Book Appointment Online | ' . cfg('doctor') . ', Physiotherapist in ' . cfg('city'),
+  'desc'  => 'Book your physiotherapy appointment online in under a minute. Instant confirmation by email and WhatsApp.',
   'path'  => 'book',
   'schema'=> [breadcrumb_schema(['Home'=>'','Book Appointment'=>'book'])],
 ];

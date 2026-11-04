@@ -315,3 +315,8 @@ img{max-width:100%;height:auto;display:block}
 @media(max-width:600px){.sl-foot{flex-wrap:wrap}.sl-foot .btn{width:100%;justify-content:center}}
 .scard .s-img::after{background:linear-gradient(180deg,rgba(6,42,48,0) 62%,rgba(6,42,48,.2) 100%)}
 .s-num{color:#fff;text-shadow:0 2px 8px rgba(6,42,48,.55)}
+
+/* credentials section */
+.cred{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));max-width:900px;margin:0 auto}
+.cred-box{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px;box-shadow:var(--sh)}
+.cred-box h3{display:flex;gap:10px;align-items:center;color:var(--p);margin-bottom:6px}

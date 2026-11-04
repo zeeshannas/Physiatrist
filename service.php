@@ -11,7 +11,7 @@ $seo = [
   'schema'=> [
     breadcrumb_schema(['Home'=>'','Services'=>'services',$s['title']=>'services/'.$slug]),
     ['@context'=>'https://schema.org','@type'=>'MedicalProcedure','name'=>$s['title'],'description'=>$s['short'],
-     'provider'=>['@type'=>'Physician','name'=>cfg('doctor')],'url'=>abs_url('services/'.$slug)],
+     'provider'=>['@type'=>'Person','name'=>cfg('doctor')],'url'=>abs_url('services/'.$slug)],
     faq_schema(array_slice($CONTENT['faqs'], 0, 4)),
   ],
 ];

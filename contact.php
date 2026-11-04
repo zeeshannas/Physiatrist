@@ -14,7 +14,6 @@ include __DIR__ . '/includes/header.php';
     <h2><?= e(cfg('clinic_name')) ?></h2>
     <p><?= icon('pin',18) ?> <?= e(cfg('address')) ?></p>
     <p><?= icon('phone',18) ?> <a href="tel:<?= e(preg_replace('/\s+/','',cfg('phone'))) ?>"><?= e(cfg('phone')) ?></a></p>
-    <p><?= icon('mail',18) ?> <a href="mailto:<?= e(cfg('email')) ?>"><?= e(cfg('email')) ?></a></p>
     <h3>Clinic timings</h3>
     <?php foreach (cfg('timings') as $d => $t): ?><p><?= icon('clock',18) ?> <b><?= e($d) ?>:</b> <?= e($t) ?></p><?php endforeach; ?>
     <a class="btn" href="<?= e(url('book')) ?>">Book Appointment</a>

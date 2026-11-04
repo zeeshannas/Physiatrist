@@ -24,6 +24,7 @@ return [
     'phone'       => '+92 307 6054492',
     'whatsapp'    => '923076054492',           
     'country_code'=> '92',                      
+    'email'       => 'benishsattar969@gmail.com',  // appointment notifications yahan aayengi; khali ho to email dikhegi nahi
     'clinic_name' => 'Haleema Hospital Complex',
     'address'     => 'Nishtar Road, Al Raheem Colony, Multan',
     'city'        => 'Multan',
@@ -36,10 +37,8 @@ return [
     ],
     'opening_hours' => ['Mo-Sa 11:00-16:00'],
     'social' => [
-        'facebook'  => '#',
-        'instagram' => '#',
-        'youtube'   => '#',
-        'linkedin'  => '#',
+        'instagram' => 'https://www.instagram.com/physiocore_bydrbenish/',
+        'tiktok'    => 'https://www.tiktok.com/@drbenishpt',
     ],
     'admin_password' => 'ChangeMe@123',
     'site_url'    => '',

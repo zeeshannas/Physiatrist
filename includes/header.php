@@ -37,6 +37,7 @@ $cur = explode('/', $cur)[0];
   <div class="wrap">
     <span><?= icon('clock',16) ?> Mon-Sat 11AM-4PM</span>
     <span class="tb-right"><a href="tel:<?= e(preg_replace('/\s+/','',cfg('phone'))) ?>"><?= icon('phone',16) ?> <?= e(cfg('phone')) ?></a>
+    <?php if (cfg('email')): ?><a href="mailto:<?= e(cfg('email')) ?>"><?= icon('mail',16) ?> <?= e(cfg('email')) ?></a><?php endif; ?>
 </span>
   </div>
 </div>

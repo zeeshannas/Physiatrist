@@ -43,6 +43,7 @@
         <ul class="f-info">
           <li><span class="em">📍</span><span><?= e(cfg('clinic_name')) ?><br><?= e(cfg('address')) ?></span></li>
           <li><span class="em">📞</span><a href="tel:<?= e(preg_replace('/\s+/','',cfg('phone'))) ?>"><?= e(cfg('phone')) ?></a></li>
+          <?php if (cfg('email')): ?><li><span class="em">✉️</span><a href="mailto:<?= e(cfg('email')) ?>"><?= e(cfg('email')) ?></a></li><?php endif; ?>
         </ul>
         <div class="f-hours">
           <b>🕒 Clinic Hours</b>

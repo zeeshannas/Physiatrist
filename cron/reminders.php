@@ -23,6 +23,9 @@ foreach ($rows as &$r) {
 }
 unset($r);
 appointments_save($rows);
+if ($links && cfg('email')) {
+    @mail(cfg('email'), 'Tomorrow\'s WhatsApp reminders (' . count($links) . ')', implode("\n\n", $links), 'From: ' . cfg('clinic_name') . ' <noreply@' . ($_SERVER['HTTP_HOST'] ?? 'localhost') . '>');
+}
 if ($links) {
     echo implode(PHP_EOL, $links) . PHP_EOL;
 }

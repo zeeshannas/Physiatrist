@@ -64,6 +64,7 @@ function icon(string $n, int $s = 28): string {
      'menu'   => '<path d="M3 6h18M3 12h18M3 18h18"/>',
      'facebook'=> '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
      'instagram'=> '<rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/>',
+     'tiktok' => '<path d="M16 3c.3 2.4 1.8 4 4 4.2v3.4a7.5 7.5 0 0 1-4-1.3v6.2a6 6 0 1 1-6-6c.3 0 .7 0 1 .1v3.5a2.6 2.6 0 1 0 1.6 2.4V3z"/>',
      'youtube'=> '<path d="M22.5 7.2a2.7 2.7 0 0 0-1.9-1.9C19 4.8 12 4.8 12 4.8s-7 0-8.6.5A2.7 2.7 0 0 0 1.5 7.2 28 28 0 0 0 1 12a28 28 0 0 0 .5 4.8 2.7 2.7 0 0 0 1.9 1.9c1.6.5 8.6.5 8.6.5s7 0 8.6-.5a2.7 2.7 0 0 0 1.9-1.9A28 28 0 0 0 23 12a28 28 0 0 0-.5-4.8z"/><path d="m10 15 5-3-5-3z"/>',
      'linkedin'=> '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/>',
      'up'     => '<path d="M12 19V5M5 12l7-7 7 7"/>',
@@ -89,7 +90,7 @@ function schema_physician(): array {
     return [
       '@context'=>'https://schema.org','@type'=>['Physiotherapy','MedicalBusiness'],
       'name'=>cfg('clinic_name'),'founder'=>['@type'=>'Person','name'=>cfg('doctor'),'jobTitle'=>'Clinical Physiotherapist'],
-      'url'=>site_url(),'telephone'=>cfg('phone'),
+      'url'=>site_url(),'telephone'=>cfg('phone'),'email'=>cfg('email'),
       'image'=>abs_url('assets/img/og-cover.svg'),
       'address'=>['@type'=>'PostalAddress','streetAddress'=>cfg('address'),'addressLocality'=>cfg('city'),'addressCountry'=>cfg('country')],
       'geo'=>['@type'=>'GeoCoordinates','latitude'=>cfg('geo')['lat'],'longitude'=>cfg('geo')['lng']],
